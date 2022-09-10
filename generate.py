@@ -124,7 +124,7 @@ def generate(n_ctx, model, context, length, tokenizer, temperature=1, top_k=0, t
                                repitition_penalty=repitition_penalty, device=device)
 
 
-def startGenerate(prefix, length, nsamples, temperature):
+def startGenerate(prefix, length, nsamples, temperature, is_fast_pattern):
     parser = argparse.ArgumentParser()
     parser.add_argument('--device', default='0,1,2,3', type=str, required=False, help='生成设备')
     parser.add_argument('--batch_size', default=1, type=int, required=False, help='生成的batch size')
@@ -136,7 +136,6 @@ def startGenerate(prefix, length, nsamples, temperature):
     parser.add_argument('--model_path', default='model', type=str, required=False, help='模型路径')
     parser.add_argument('--no_wordpiece', action='store_true', help='不做word piece切词')
     parser.add_argument('--segment', action='store_true', help='中文以词为单位')
-    parser.add_argument('--fast_pattern', default=true, action='store_true', help='采用更加快的方式生成文本')
     parser.add_argument('--save_samples', action='store_true', help='保存产生的样本')
     parser.add_argument('--save_samples_path', default='.', type=str, required=False, help="保存样本的路径")
     parser.add_argument('--repetition_penalty', default=1.0, type=float, required=False)
@@ -180,7 +179,7 @@ def startGenerate(prefix, length, nsamples, temperature):
                 model=model,
                 context=context_tokens,
                 length=length,
-                is_fast_pattern=args.fast_pattern, tokenizer=tokenizer,
+                is_fast_pattern=is_fast_pattern, tokenizer=tokenizer,
                 temperature=temperature, top_k=topk, top_p=topp, repitition_penalty=repetition_penalty, device=device
             )
             for i in range(batch_size):
