@@ -130,13 +130,13 @@ def startGenerate(prefix, length, nsamples, temperature):
     parser.add_argument('--batch_size', default=1, type=int, required=False, help='生成的batch size')
     parser.add_argument('--topk', default=8, type=int, required=False, help='最高几选一')
     parser.add_argument('--topp', default=0, type=float, required=False, help='最高积累概率')
-    parser.add_argument('--model_config', default='config/model_config_small.json', type=str, required=False,
+    parser.add_argument('--model_config', default='model/config.json', type=str, required=False,
                         help='模型参数')
-    parser.add_argument('--tokenizer_path', default='cache/vocab_small.txt', type=str, required=False, help='词表路径')
+    parser.add_argument('--tokenizer_path', default='config/vocab.txt', type=str, required=False, help='词表路径')
     parser.add_argument('--model_path', default='model', type=str, required=False, help='模型路径')
     parser.add_argument('--no_wordpiece', action='store_true', help='不做word piece切词')
     parser.add_argument('--segment', action='store_true', help='中文以词为单位')
-    parser.add_argument('--fast_pattern', action='store_true', help='采用更加快的方式生成文本')
+    parser.add_argument('--fast_pattern', default=true, action='store_true', help='采用更加快的方式生成文本')
     parser.add_argument('--save_samples', action='store_true', help='保存产生的样本')
     parser.add_argument('--save_samples_path', default='.', type=str, required=False, help="保存样本的路径")
     parser.add_argument('--repetition_penalty', default=1.0, type=float, required=False)
