@@ -132,7 +132,7 @@ def startGenerate(prefix, length, nsamples, temperature, is_fast_pattern):
     parser.add_argument('--topp', default=0, type=float, required=False, help='最高积累概率')
     parser.add_argument('--model_config', default='model/config.json', type=str, required=False,
                         help='模型参数')
-    parser.add_argument('--tokenizer_path', default='config/vocab.txt', type=str, required=False, help='词表路径')
+    parser.add_argument('--tokenizer_path', default='model/vocab.txt', type=str, required=False, help='词表路径')
     parser.add_argument('--model_path', default='model', type=str, required=False, help='模型路径')
     parser.add_argument('--no_wordpiece', action='store_true', help='不做word piece切词')
     parser.add_argument('--segment', action='store_true', help='中文以词为单位')
