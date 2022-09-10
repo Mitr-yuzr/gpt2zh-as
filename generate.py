@@ -140,7 +140,7 @@ def startGenerate(prefix, length, nsamples, temperature, is_fast_pattern):
     parser.add_argument('--save_samples_path', default='.', type=str, required=False, help="保存样本的路径")
     parser.add_argument('--repetition_penalty', default=1.0, type=float, required=False)
 
-    args = parser.parse_args()
+    args = parser.parse_known_args()[0]
     # print('args:\n' + args.__repr__())
 
     if args.segment:
